@@ -1,2 +1,2 @@
 #!/bin/sh
-rsync -r --exclude sync  . ~/Library/Containers/com.foldingtext.FoldingText/Data/Library/Application\ Support/FoldingText/Themes/User.fttheme/
+rsync -r --exclude sync --exclude README.md --exclude .git  . ~/Library/Containers/com.foldingtext.FoldingText/Data/Library/Application\ Support/FoldingText/Themes/User.fttheme/

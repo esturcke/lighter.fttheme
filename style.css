@@ -1,0 +1,257 @@
+/* 
+ * @name:     Lighter theme for FoldingText
+ * @version:  0.1
+ * @author:   Erik J. Sturcke
+ */
+
+@font-face {
+	font-family: "done";
+	src: url('./fonts/bullet-done.ttf');
+}
+@font-face {
+	font-family: "notdone";
+	src: url('./fonts/bullet-not-done.ttf');
+}
+@font-face {
+	font-family: "fold";
+	src: url('./fonts/fold-ellipse.ttf');
+}
+
+html {
+	font-size              : 100%;
+	text-rendering         : optimizeLegibility;
+	-webkit-font-smoothing : antialiased;
+}
+
+body {
+	font-family : "Avenir Next", sans-serif;
+	font-weight : normal;
+	font-size   : 14px;
+	line-height : 20px;
+	background  : #eee;
+	color       : #333;
+}
+
+.tabs {
+	font-family : HalfWidthSpace;
+}
+
+.code, .codeblock {
+	background  : #ddd;
+	color       : hsl(215, 78%, 50%);
+	font-family : "DejaVu Sans Mono", monospace;
+	font-size   : 12px;
+}
+
+.code:not(.currentSyntaxBlock) {
+	display : inline-block;
+	padding : 0px 2px
+}
+
+.blockquote {
+	font-style  : oblique;
+	color       : #444;
+	border-left : 4px solid #ddd;
+}
+
+.blockquote:not(.currentLine) > .content > .lead.syntax {
+	visibility : hidden;
+}
+
+.blockquote > .content > .lead.syntax {
+
+}
+
+.unordered > .content > .lead.syntax,
+.ordered > .content > .lead.syntax {
+	opacity : 0.7;
+}
+
+.heading > .content > .lead.syntax,
+.heading > .content > .trail.syntax   {
+	opacity : 0.3;
+}
+
+.heading > .content {
+	margin-left: -0.313rem; /* 5px; */
+}
+
+.heading > .content > .text {
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1;
+	color: rgb(0%,0%,0%);
+}
+
+.heading > .content > .text.strong:not(.syntax) {
+	font-family: "Avenir Next";
+	font-weight: 500;
+}
+
+div[level="0"].heading > .content > .text {
+	color       : #e0042d;
+	font-weight : 300;
+	font-size   : 40px;
+	line-height : 50px 
+}
+
+div[level="1"].heading > .content > .text {
+	color       : #444;
+	font-weight : 600;
+	font-size   : 26px;
+	line-height : 30px 
+}
+
+div[level="2"].heading > .content > .text {
+	text-transform: uppercase;
+}
+
+.heading > .content > .lead.syntax {
+	font-family: "Andale Mono", monospace;
+}
+
+.heading > .content > .lead.syntax,
+.heading > .content > .mode {
+	 font-size: 0.938rem;
+	 font-weight: 500;
+}
+
+.heading .lead.syntax.currentSyntaxBlock  {
+	color: gray;
+}
+
+.unordered > .content > .syntax.lead {
+	margin      : 0 5px 0 -5px;
+	font-family : fold;
+}
+
+.unordered.todoMode > .content > .syntax.lead {
+	font-family: notdone;
+}
+
+.ordered > .content > .syntax.lead:not(.currentWord) {
+	margin-right: 0.313rem; /* 5px; */
+}
+
+.ordered[level="0"] > .content > .syntax.lead {
+	margin-left: -0.313rem; /* 5px; */
+}
+
+.ordered[level="0"] > .content > .syntax.lead.currentWord {
+	margin-right: 0.313rem; /* 5px; */
+}
+
+.headerLeadSyntaxText:hover {
+	text-decoration:underline;
+	cursor: pointer;
+}
+
+.htmltag {
+	color:rgb(20%,20%,50%);
+}
+
+.htmltag-attributevalue {
+	color:rgb(20%,50%,20%);
+}
+
+.foldafter .content:after {
+	font-family: fold;
+	font-style: normal;
+	font-weight: normal;
+	content:" …";
+}
+
+.editorTopFold {
+	color: rgb(97%,97%,97%);
+	background: rgb(20%,20%,20%);
+}
+
+/* Base tag styles */
+div span.tag.syntax:not(.currentSyntaxBlock),
+div span.tag.tagname:not(.currentSyntaxBlock),
+div span.tag.tagvalue:not(.currentSyntaxBlock) {
+	text-decoration : none;
+	text-transform  : uppercase;
+	vertical-align  : 1px;
+	text-indent     : 0px;
+	display         : inline-block;
+	font-size       : 9px;
+	line-height     : 12px;
+
+}
+
+div span.tag.syntax:not(.currentSyntaxBlock) {
+	display:none;
+}
+
+div span.tag.tagname:not(.currentSyntaxBlock) {
+	background: #e5e5e5;
+	color: #444;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	padding : 1px 8px; 
+	margin-left : 4px;
+}
+
+div span.tag.tagvalue:not(.currentSyntaxBlock) {
+	border-radius : 0 8px 8px 0;
+	background    : #e5e5e5;
+	color         : #555;
+	box-shadow    : inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+	margin-left   : -5px;
+	padding       : 1px 8px 1px 4px;
+	font-weight   : bold;
+}
+
+div span.tag.tagname:hover,
+div span.tag.tagvalue:hover {
+	background : #777;
+	color      : #eee;
+}
+/* Custom colour tag styles */
+
+div[done] {
+	opacity : 0.4;
+}
+
+div[low] span[class~=text] {
+    color: rgb(101, 143, 205);
+}
+div[high] span[class~=text] {
+	color: rgb(228, 113, 112);
+}
+
+div[hl] span[class~=text] {
+	background: rgb(255, 252, 188);
+}
+
+div[done].unordered.todoMode > .content > .syntax.lead {
+	font-family: done;
+}
+
+div[done].unordered.todoMode span[class~=text] {
+    text-decoration: line-through;
+    color: gray;
+    background: none;
+}
+
+div[green] span.tag.tagname {
+	background: rgb(178, 230, 179);
+	background: rgb(224, 232, 228);
+	color: rgb(11, 126, 73);
+}
+
+div[pink] span.tag.tagname {
+	background: rgb(238, 227, 233);
+	color: rgb(177, 37, 113);
+}
+
+div[custom] span.tag.tagname {
+	background: rgb(240, 238, 226);
+	color: rgb(161, 160, 153);
+}
+
+div[blue] span.tag.tagname {
+	background: rgb(227, 235, 238);
+	color: rgb(5, 139, 186);
+}
